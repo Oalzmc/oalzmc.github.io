@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Oalz's Builder Portfolio - All Projects</title>
+   <meta name="description"
+      content="View all of Oalz's custom Minecraft builds, including maps, server spawns, and themed assets.">
+   <link rel="canonical" href="https://minecraftbuilder.com/gallery.html">
+   <link rel="icon" href="favicon.png" type="image/png">
+   <meta property="og:title" content="Oalz Minecraft Build Portfolio">
+   <meta property="og:description"
+      content="View all of Oalz's custom Minecraft builds, including maps, server spawns, and themed assets.">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://minecraftbuilder.com/gallery.html">
+   <meta property="og:image" content="images/islandvertically.png">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://unpkg.com/lucide@latest"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+   <style>
+      .masonry-grid {
+         column-count: 1;
+         column-gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+         .masonry-grid {
+            column-count: 2;
+         }
+      }
+
+      @media (min-width: 1024px) {
+         .masonry-grid {
+            column-count: 3;
+         }
+      }
+
+      .masonry-item {
+         break-inside: avoid;
+         margin-bottom: 1.5rem;
+         display: block;
+      }
+
+      .masonry-item .overlay-content {
+         transition: opacity 0.3s ease;
+      }
+
+      .masonry-item:hover .overlay-content {
+         opacity: 0;
+      }
+
+      #gridBackground {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         z-index: -2;
+         filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+      }
+
+      .fade-overlay {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         z-index: -1;
+         pointer-events: none;
+         background: radial-gradient(circle at center,
+               rgba(0, 0, 0, 0) 50%,
+               rgba(0, 0, 0, 0.2) 75%,
+               rgba(0, 0, 0, 0.4) 100%),
+            linear-gradient(to bottom,
+               rgba(0, 0, 0, 0.8) 0%,
+               rgba(0, 0, 0, 0) 40%,
+               rgba(0, 0, 0, 0.7) 90%,
+               rgba(0, 0, 0, 1) 100%);
+      }
+
+      /* New Animation Styles */
+      .reveal {
+         opacity: 0;
+         transform: translateY(30px);
+         transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+      }
+
+      .reveal.active {
+         opacity: 1;
+         transform: translateY(0);
+      }
+   </style>
+</head>
+
+<body class="bg-gray-900 text-white" style="font-family: 'Outfit', sans-serif;">
+   <canvas id="gridBackground"></canvas>
+   <div class="fade-overlay"></div>
+   <style>
+      @font-face {
+         font-family: 'MinecraftRegular';
+         src: url('fonts/MinecraftRegular.otf') format('opentype');
+         font-weight: normal;
+         font-style: normal;
+      }
+   </style>
+   <header id="main-header"
+      class="fixed top-0 w-full z-50 transition-all duration-500 bg-black/90 backdrop-blur-xl border-b border-white/5 py-3 shadow-lg">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="flex items-center justify-between h-14 md:h-16 transition-all duration-300" id="header-content">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
+               <div
+                  class="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-emerald-500/10 rounded-lg overflow-hidden group-hover:bg-emerald-500/20 transition-all duration-300"
+                  id="logo-container">
+                  <img src="icon.png" alt="Oalz Logo"
+                     class="w-6 h-6 md:w-8 md:h-8 object-contain relative z-10 group-hover:scale-110 transition-transform duration-500">
+                  <div
+                     class="absolute inset-0 bg-emerald-500/20 blur-xl group-hover:opacity-100 transition-opacity duration-500 opacity-0">
+                  </div>
+               </div>
+               <span
+                  class="text-2xl md:text-3xl font-normal tracking-wide text-emerald-500 group-hover:text-emerald-400 transition-colors duration-300"
+                  style="font-family: 'MinecraftRegular', sans-serif;">Oalz</span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+               <a href="index.html#portfolio"
+                  class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
+                  Portfolio
+                  <span
+                     class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
+               </a>
+               <a href="index.html#services"
+                  class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
+                  Services
+                  <span
+                     class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
+               </a>
+               <a href="index.html#pricing"
+                  class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
+                  Pricing
+                  <span
+                     class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
+               </a>
+               <a href="index.html#testimonials"
+                  class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
+                  Reviews
+                  <span
+                     class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
+               </a>
+               <a href="index.html#order"
+                  class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
+                  Contact
+                  <span
+                     class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
+               </a>
+            </nav>
+
+            <!-- CTA & Mobile Menu -->
+            <div class="flex items-center gap-4">
+               <a href="index.html#order" class="hidden md:block">
+                  <button
+                     class="relative overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-3 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 group">
+                     <span class="relative z-10">Get Started</span>
+                     <div
+                        class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                     </div>
+                  </button>
+               </a>
+               <button class="md:hidden text-gray-300 hover:text-white transition-colors p-2">
+                  <i data-lucide="menu" class="w-8 h-8"></i>
+               </button>
+            </div>
+            <!-- Back to Top Button -->
+            <button id="backToTop"
+               class="fixed bottom-6 left-6 z-50 p-3 bg-gray-800 text-emerald-500 rounded-full shadow-lg border border-emerald-500/30 opacity-0 translate-y-10 transition-all duration-300 hover:bg-gray-700 hover:text-emerald-400 hover:border-emerald-500 hover:shadow-emerald-500/20"
+               aria-label="Back to Top">
+               <i data-lucide="arrow-up" class="w-6 h-6"></i>
+            </button>
+         </div>
+      </div>
+   </header>
+   <main class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-center mb-16">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4">
+               <span class="text-green-400">Masterpiece</span> Portfolio
+            </h1>
+            <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+               Showcasing over 100+ professional Minecraft builds, from epic maps to server hubs. Filter by category to
+               find inspiration for <u>your</u> next project.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3" id="filter-buttons">
+               <button data-filter="all"
+                  class="filter-btn bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full font-medium transition-colors shadow-md">
+                  All Projects
+               </button>
+               <button data-filter="map"
+                  class="filter-btn bg-gray-700 hover:bg-green-700 text-gray-300 hover:text-white px-5 py-2 rounded-full font-medium transition-colors">
+                  Custom Maps
+               </button>
+               <button data-filter="spawn"
+                  class="filter-btn bg-gray-700 hover:bg-green-700 text-gray-300 hover:text-white px-5 py-2 rounded-full font-medium transition-colors">
+                  Server Spawns
+               </button>
+               <button data-filter="asset"
+                  class="filter-btn bg-gray-700 hover:bg-green-700 text-gray-300 hover:text-white px-5 py-2 rounded-full font-medium transition-colors">
+                  Themed Assets
+               </button>
+               <button data-filter="contest"
+                  class="filter-btn bg-gray-700 hover:bg-green-700 text-gray-300 hover:text-white px-5 py-2 rounded-full font-medium transition-colors">
+                  Contest Builds
+               </button>
+            </div>
+         </div>
+         <div class="masonry-grid" id="portfolio-grid">
+         </div>
+      </div>
+   </main>
+   <footer class="bg-gray-800 border-t border-gray-700">
+      <div class="container mx-auto px-4 py-12">
+         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+               <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 bg-black-500 rounded flex items-center justify-center overflow-hidden">
+                     <img src="icon.png" alt="Oalz Logo" class="w-8 h-8 object-contain">
+                  </div>
+                  <span class="text-xl font-bold text-green-400">Oalz</span>
+               </div>
+               <p class="text-gray-400 mb-4 max-w-md">
+                  Professional Minecraft builder. Creating stunning custom builds for content creators and server owners
+                  worldwide.
+               </p>
+               <div class="flex space-x-4">
+                  <a href="https://x.com/OalzMC" target="_blank"
+                     class="text-gray-400 hover:text-green-400 transition-colors">
+                     <i data-lucide="x" class="w-5 h-5"></i>
+                  </a>
+                  <a href="https://discord.com/users/1237697528862867481" target="_blank"
+                     class="text-gray-400 hover:text-green-400 transition-colors">
+                     <i data-lucide="users" class="w-5 h-5"></i>
+                  </a>
+                  <a href="https://www.youtube.com/@Oalzmc/featured" target="_blank"
+                     class="text-gray-400 hover:text-green-400 transition-colors">
+                     <i data-lucide="youtube" class="w-5 h-5"></i>
+                  </a>
+                  <a href="mailto:Oalz-@outlook.com" class="text-gray-400 hover:text-green-400 transition-colors">
+                     <i data-lucide="mail" class="w-5 h-5"></i>
+                  </a>
+                  <a href="https://www.twitch.tv/oalzmc" target="_blank"
+                     class="text-gray-400 hover:text-green-400 transition-colors">
+                     <i data-lucide="tv" class="w-5 h-5"></i>
+                  </a>
+                  <a href="https://www.planetminecraft.com/member/oalz/" target="_blank"
+                     class="text-gray-400 hover:text-green-400 transition-colors">
+                     <i data-lucide="globe" class="w-5 h-5"></i>
+                  </a>
+               </div>
+            </div>
+            <div>
+               <h3 class="text-white font-semibold mb-4">Services</h3>
+               <ul class="space-y-2">
+                  <li><a href="index.html#services" class="text-gray-400 hover:text-green-400 transition-colors">Custom
+                        Map Builds</a></li>
+                  <li><a href="index.html#services" class="text-gray-400 hover:text-green-400 transition-colors">Server
+                        Spawns</a></li>
+                  <li><a href="index.html#services"
+                        class="text-gray-400 hover:text-green-400 transition-colors">Adventure Maps</a></li>
+                  <li><a href="index.html#services"
+                        class="text-gray-400 hover:text-green-400 transition-colors">Assets</a></li>
+               </ul>
+            </div>
+            <div>
+               <h3 class="text-white font-semibold mb-4">Support</h3>
+               <ul class="space-y-2">
+                  <li><a href="index.html#contact"
+                        class="text-gray-400 hover:text-green-400 transition-colors">Contact</a></li>
+                  <li><a href="#" class="text-gray-400 hover:text-green-400 transition-colors">FAQ</a></li>
+                  <li><a href="gallery.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a>
+                  </li>
+                  <li><a href="tos.html" class="text-gray-400 hover:text-green-400 transition-colors">Terms of
+                        Service</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p class="text-gray-400">
+               © 2024 Oalz. All rights reserved. Professional Minecraft builds for creators.
+            </p>
+         </div>
+      </div>
+   </footer>
+   <div id="floating-btn-container"
+      class="fixed bottom-6 right-6 z-50 transition-all duration-300 ease-in-out hidden md:block">
+      <button onclick="openContactOverlay()" id="header-btn">
+         <div
+            class="relative overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-3 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 group">
+            <span class="relative z-10">Get Started</span>
+            <div
+               class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            </div>
+         </div>
+      </button>
+   </div>
+
+   <!-- Contact Overlay -->
+   <div id="contact-overlay" class="fixed inset-0 z-[100] hidden opacity-0 transition-opacity duration-300">
+      <!-- Backdrop Blur -->
+      <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeContactOverlay()"></div>
+
+      <!-- Content Container -->
+      <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 w-full">
+         <h2 id="overlay-title"
+            class="text-3xl md:text-5xl font-bold text-white mb-12 text-center transform translate-y-10 opacity-0 transition-all duration-700 ease-out delay-100"
+            style="font-family: 'Outfit', sans-serif;">
+            How would you like to reach out?
+         </h2>
+
+         <div class="flex flex-col md:flex-row gap-6 mb-12 w-full max-w-4xl justify-center items-stretch">
+            <!-- Discord Button -->
+            <a href="https://discord.com/users/1237697528862867481" target="_blank" id="btn-discord"
+               class="flex-1 group relative overflow-hidden bg-[#5865F2] hover:bg-[#4752C4] text-white py-6 px-10 rounded-2xl transition-all duration-500 transform translate-y-10 opacity-0 shadow-2xl hover:shadow-[#5865F2]/50 hover:-translate-y-2 flex items-center justify-center gap-6 border border-[#5865F2] hover:border-white/20">
+               <!-- Discord Logo SVG -->
+               <svg
+                  class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg]"
+                  viewBox="0 0 127.14 96.36" fill="currentColor">
+                  <path
+                     d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.11,77.11,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22c2.36-24.44-5.42-48.18-18.9-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+               </svg>
+               <div class="flex flex-col items-start">
+                  <span
+                     class="text-2xl md:text-3xl font-bold font-sans tracking-wide group-hover:tracking-wider transition-all duration-300">Discord</span>
+                  <span
+                     class="text-sm md:text-base font-medium opacity-80 group-hover:opacity-100 transition-opacity">Chat
+                     directly</span>
+               </div>
+               <div
+                  class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out">
+               </div>
+            </a>
+
+            <!-- Email Button -->
+            <a href="mailto:Oalz-@outlook.com" id="btn-email"
+               class="flex-1 group relative overflow-hidden bg-white hover:bg-gray-50 text-gray-900 py-6 px-10 rounded-2xl transition-all duration-500 transform translate-y-10 opacity-0 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 flex items-center justify-center gap-6 border border-gray-200 delay-100">
+               <div class="relative">
+                  <i data-lucide="mail"
+                     class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg] text-gray-900"></i>
+                  <div
+                     class="absolute inset-0 bg-emerald-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  </div>
+               </div>
+               <div class="flex flex-col items-start">
+                  <span
+                     class="text-2xl md:text-3xl font-bold font-sans tracking-wide group-hover:tracking-wider transition-all duration-300">Email</span>
+                  <span
+                     class="text-sm md:text-base font-medium text-gray-600 group-hover:text-gray-900 transition-colors">Send
+                     a message</span>
+               </div>
+            </a>
+         </div>
+
+         <!-- Close Button -->
+         <button onclick="closeContactOverlay()" id="btn-close"
+            class="text-gray-400 hover:text-white text-lg font-medium transition-all duration-300 border-b border-transparent hover:border-emerald-500 pb-1 opacity-0 transform translate-y-4 delay-200 hover:tracking-wide">
+            Continue looking
+         </button>
+      </div>
+   </div>
+
+   <!-- Lightbox Overlay -->
+   <div id="lightbox-overlay" class="fixed inset-0 z-[110] hidden opacity-0 transition-opacity duration-500">
+      <!-- Light Blur Backdrop (5%) -->
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-[2px] cursor-zoom-out" onclick="closeLightbox()"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 w-full h-full flex items-center justify-center pointer-events-none p-4">
+         <img id="lightbox-image" src="" alt="Zoomed View"
+            class="max-w-[90vw] max-h-[90vh] md:max-w-[50vw] w-auto h-auto object-contain rounded-lg shadow-2xl transform scale-90 opacity-0 transition-all duration-500 pointer-events-auto select-none">
+      </div>
+   </div>
+
+   <script>
+      // --- Contact Overlay Logic ---
+      function openContactOverlay() {
+         const overlay = document.getElementById('contact-overlay');
+         const title = document.getElementById('overlay-title');
+         const btnDiscord = document.getElementById('btn-discord');
+         const btnEmail = document.getElementById('btn-email');
+         const btnClose = document.getElementById('btn-close');
+
+         overlay.classList.remove('hidden');
+
+         // Trigger animations
+         setTimeout(() => {
+            overlay.classList.remove('opacity-0');
+
+            // Staggered entrance
+            title.classList.remove('opacity-0', 'translate-y-10');
+            btnDiscord.classList.remove('opacity-0', 'translate-y-10');
+            btnEmail.classList.remove('opacity-0', 'translate-y-10');
+            btnClose.classList.remove('opacity-0', 'translate-y-4');
+         }, 50);
+
+         document.body.style.overflow = 'hidden';
+      }
+
+      function closeContactOverlay() {
+         const overlay = document.getElementById('contact-overlay');
+         const title = document.getElementById('overlay-title');
+         const btnDiscord = document.getElementById('btn-discord');
+         const btnEmail = document.getElementById('btn-email');
+         const btnClose = document.getElementById('btn-close');
+
+         // Reset animations
+         title.classList.add('opacity-0', 'translate-y-10');
+         btnDiscord.classList.add('opacity-0', 'translate-y-10');
+         btnEmail.classList.add('opacity-0', 'translate-y-10');
+         btnClose.classList.add('opacity-0', 'translate-y-4');
+
+         overlay.classList.add('opacity-0');
+
+         setTimeout(() => {
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+         }, 500);
+      }
+
+      // --- Lightbox Logic ---
+      function openLightbox(src) {
+         const overlay = document.getElementById('lightbox-overlay');
+         const img = document.getElementById('lightbox-image');
+
+         if (!overlay || !img) return;
+
+         img.src = src;
+         overlay.classList.remove('hidden');
+
+         setTimeout(() => {
+            overlay.classList.remove('opacity-0');
+            img.classList.remove('scale-90', 'opacity-0');
+            img.classList.add('scale-100', 'opacity-100');
+         }, 50);
+
+         document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+         const overlay = document.getElementById('lightbox-overlay');
+         const img = document.getElementById('lightbox-image');
+
+         overlay.classList.add('opacity-0');
+         img.classList.remove('scale-100', 'opacity-100');
+         img.classList.add('scale-90', 'opacity-0');
+
+         setTimeout(() => {
+            overlay.classList.add('hidden');
+            img.src = ''; // Clear source
+            document.body.style.overflow = '';
+         }, 500);
+      }
+   </script>
+   <script>
+      lucide.createIcons();
+
+      const portfolioData = [
+         { filename: '100event.png', title: '100 Day Event Spawn', description: 'A large, complex survival event spawn.', category: 'spawn contest' }, //d
+         { filename: 'arena.png', title: 'Gladiatorial Arena', description: 'A detailed arena for combat minigames.', category: 'spawn' },  //d
+         { filename: 'beach.png', title: 'Tropical Beach Shore', description: 'A custom, sandy beach biome.', category: 'map asset' }, //d
+         { filename: 'bedroom.png', title: 'Cozy Bedroom Interior', description: 'Simple interior design asset.', category: 'asset' },  //d
+         { filename: 'birchnorthernlights.png', title: 'Northern Birch Forest', description: 'Custom birch forest with aurora borealis.', category: 'map' },  //d
+         { filename: 'birchriver.png', title: 'Birch River Landscape', description: 'Detailed river flowing through a birch biome.', category: 'map' }, //d
+         { filename: 'birchrivercube.png', title: 'Birch River Cube Map', description: 'A small, floating sky island map.', category: 'map' }, //d
+         { filename: 'blackhole.png', title: 'Black Hole Event Map', description: 'Unique space-themed build/asset.', category: 'asset' }, //d
+         { filename: 'blackholebright.png', title: 'Black Hole Light Box', description: 'Lighting detail for the Black Hole project.', category: 'asset' },//d
+         { filename: 'blacksmith.png', title: 'Fantasy Blacksmith Shop', description: 'A detailed medieval blacksmith building.', category: 'asset' },//d
+         { filename: 'boatviking.png', title: 'Viking Longboat', description: 'A custom Viking boat structure/asset.', category: 'asset' },//d
+         { filename: 'bunker.png', title: 'Abandoned Bunker Map', description: 'Detailed underground bunker for an adventure map.', category: 'map' },//d
+         { filename: 'castle.png', title: 'Fantasy Castle Keep', description: 'A large castle or fortress structure.', category: 'asset' }, //d
+         { filename: 'cliffside.png', title: 'Rocky Cliffside Map', description: 'A steep, detailed cliff terrain.', category: 'map' }, //d
+         { filename: 'cozymedivalvillage.png', title: 'Cozy Medival Village', description: 'A cozy village in a custom muskeg biome.', category: 'map' },
+         { filename: 'cuteisland.png', title: 'Oak Island', description: 'Small, stylized floating island build.', category: 'asset' },
+         { filename: 'desert.png', title: 'Desert Canyon Landscape', description: 'Epic desert canyon with custom terrain.', category: 'map' },
+         { filename: 'desertvillage.png', title: 'Desert Village Build', description: 'A custom, detailed desert village.', category: 'asset' },
+         { filename: 'funnygameplay.png', title: 'Funny Gameplay Map Scene', description: 'A fun, stylized scene for a minigame map.', category: 'map' },
+         { filename: 'funnygameplaycube.png', title: 'Funny Cube Game Map', description: 'A cubic minigame map setting.', category: 'map' },
+         { filename: 'glowingcave.png', title: 'Glowing Cave Interior', description: 'An illuminated, atmospheric cave system.', category: 'asset' },
+         { filename: 'greatwallpaper.png', title: 'Epic Landscape Wallpaper', description: 'High-quality render of a custom map.', category: 'map' },
+         { filename: 'halloween.png', title: 'Spooky Halloween Scene', description: 'Themed map/asset for a Halloween event.', category: 'asset' },
+         { filename: 'horrormap.png', title: 'Atmospheric Horror Map', description: 'Interior of a spooky, atmospheric horror map.', category: 'map' },
+         { filename: 'horrormaptarget.png', title: 'Horror Map Target Area', description: 'A specific target or goal area within a horror map.', category: 'map' },
+         { filename: 'hotsavanna.png', title: 'Hot Savanna Biome', description: 'Custom terrain and flora for a warm savanna.', category: 'map' },
+         { filename: 'ice.png', title: 'Ice Peaks and Glaciers', description: 'Detailed custom ice biome.', category: 'map' },
+         { filename: 'islandcorner.png', title: 'Island Corner Detail', description: 'A close-up of a custom island map corner.', category: 'map' },
+         { filename: 'islandvertically.png', title: 'Vertical Floating Island', description: 'A tall, epic floating island build.', category: 'asset' },
+         { filename: 'japanese.png', title: 'Japanese Style Build', description: 'Architectural build in a Japanese style.', category: 'asset' },
+         { filename: 'jungle.png', title: 'Lush Jungle Build', description: 'Dense, custom jungle biome.', category: 'map' },
+         { filename: 'junglesunny.png', title: 'Sunny Jungle Scene', description: 'Stylized jungle terrain for a fun map.', category: 'map' },
+         { filename: 'jungletall.png', title: 'Tall Jungle Trees', description: 'A detailed section of a jungle map.', category: 'map' },
+         { filename: 'lighthouse.png', title: 'Coastal Lighthouse', description: 'A detailed lighthouse asset or scene.', category: 'asset' },
+         { filename: 'lobby.png', title: 'Server Lobby Map', description: 'A large spawn/lobby area for a server.', category: 'spawn' },
+         { filename: 'mazerunnertrailer.png', title: 'Mazerunner Trailer Scene', description: 'Scene used for a Mazerunner map trailer.', category: 'map' },
+         { filename: 'mazerunnermapgate.png', title: 'Mazerunner Map Exit', description: 'The grand final room/exit of the Mazerunner map.', category: 'map' },
+         { filename: 'mazerunnerxwalls.png', title: 'Mazerunner Wall Details', description: 'Detailed walls of the Mazerunner maze.', category: 'map' },
+         { filename: 'medivalhouse.png', title: 'Medieval Village House', description: 'A residential building asset in medieval style.', category: 'asset' },
+         { filename: 'minecraftcontest.png', title: 'Official Contest Entry', description: 'Submission for a major Minecraft building contest.', category: 'contest' },
+         { filename: 'minecraftcontestskytower.png', title: 'My Contest Entry', description: 'A themed build for the Tyrol Minecraft contest.', category: 'contest' },
+         { filename: 'mrbeast.png', title: 'Building Contest', description: 'A map or render showcasing a custom skybox/view.', category: 'map' },
+         { filename: 'natureswampspruce.png', title: 'Spruce Swamp Biome', description: 'Custom spruce and swamp terrain.', category: 'asset' },
+         { filename: 'nosnowmountain.png', title: 'Barren Mountainscape', description: 'A custom, rocky, non-snowy mountain range.', category: 'map' },
+         { filename: 'oakmountain.png', title: 'Isolated Oak Trees', description: 'A detailed, custom oak tree asset.', category: 'asset' },
+         { filename: 'oaktrees.png', title: 'Custom Oak Trees', description: 'A selection of custom oak tree schematics.', category: 'asset' },
+         { filename: 'oilplatform.png', title: 'Offshore Oil Platform', description: 'A detailed large structure build/asset.', category: 'map asset' },
+         { filename: 'outpost.png', title: 'Military Outpost Structure', description: 'A defensive or forward operating base.', category: 'asset' },
+         { filename: 'palmtreecube.png', title: 'Palm Tree Asset Pack', description: 'Schematics for custom palm trees.', category: 'asset' },
+         { filename: 'plains.png', title: 'Grassy Plains Map', description: 'Wide-open custom plains terrain.', category: 'map' },
+         { filename: 'planecrash.png', title: 'Plane Crash Scene', description: 'Detailed plane crash map asset.', category: 'map' },
+         { filename: 'planecrashcube.png', title: 'Plane Crash Cube', description: 'A plane crash scene contained on a small cube.', category: 'map' },
+         { filename: 'pyramid.png', title: 'Desert Pyramid Exterior', description: 'Large Egyptian-style pyramid exterior.', category: 'asset' },
+         { filename: 'pyramidinside.png', title: 'Pyramid Interior Room', description: 'Detailed interior of the pyramid structure.', category: 'asset' },
+         { filename: 'pyramidtrap.png', title: 'Pyramid Trap', description: 'Pyramid structure integrated into a desert map.', category: 'map' },
+         { filename: 'realcave.png', title: 'Realistic Cave System', description: 'Detailed, natural-looking cave interior.', category: 'asset' },
+         { filename: 'savanna.png', title: 'African Savanna Map', description: 'Wide view of a custom savanna biome.', category: 'map' },
+         { filename: 'savannaclif.png', title: 'Savanna Cliffside', description: 'Detailed cliff face in a savanna setting.', category: 'map' },
+         { filename: 'savannaland.png', title: 'Savanna Island', description: 'A floating island with savanna features.', category: 'map' },
+         { filename: 'savannatree.png', title: 'Savanna Tree Asset', description: 'Custom Baobab-style tree schematic.', category: 'asset' },
+         { filename: 'selfie.png', title: 'Builder Selfie Scene', description: 'A scenic custom landscape with the builder character.', category: 'map' },
+         { filename: 'serverlobby.png', title: 'Large Server Lobby', description: 'An overview of a large, themed server spawn.', category: 'spawn' },
+         { filename: 'simpleinteriors.png', title: 'Simple Interior Assets', description: 'Various simple and cozy interior room designs.', category: 'asset' },
+         { filename: 'skihut.png', title: 'Mountain Ski Hut', description: 'A detailed log cabin or ski hut asset.', category: 'asset' },
+         { filename: 'snowyspruce.png', title: 'Snowy Spruce Forest', description: 'A custom, cold spruce biome.', category: 'map' },
+         { filename: 'spruce.png', title: 'Spruce Forest Terrain', description: 'Custom terrain with spruce trees.', category: 'asset' },
+         { filename: 'sprucetrees.png', title: 'Spruce Tree Schematics', description: 'A pack of custom spruce tree assets.', category: 'asset' },
+         { filename: 'stillaplanecrash.png', title: 'Plane Crash Close-up', description: 'Another view of the plane crash asset.', category: 'map' },
+         { filename: 'submarine.png', title: 'Submarine Interior', description: 'An interior map/asset of a submarine.', category: 'asset' },
+         { filename: 'sunsays.png', title: 'Sunrise/Sunset View', description: 'Custom lighting and atmosphere scene.', category: 'map' },
+         { filename: 'survivalmap.png', title: 'Survival Island Map', description: 'A detailed starting area for a survival map.', category: 'map' },
+         { filename: 'swamp.png', title: 'Murky Swamp Map', description: 'A detailed, foggy custom swamp biome.', category: 'map' },
+         { filename: 'target3dgamingmap.png', title: 'Target Island Minigame', description: 'A custom map designed for an aiming or combat minigame.', category: 'map' },
+         { filename: 'targetmap.jpg', title: 'Target Minigame Map', description: 'A custom minigame map environment.', category: 'map' },
+         { filename: 'targetsmap.png', title: 'Target Map Spawn Point', description: 'The spawn area of the target minigame map.', category: 'spawn' },
+         { filename: 'vikings.png', title: 'Viking Settlement', description: 'A small village or camp in a Viking theme.', category: 'asset' },
+         { filename: 'vulcanocave.png', title: 'Volcanic Cave System', description: 'An asset or map of a fiery cave near a volcano.', category: 'asset' },
+         { filename: 'wallpaper.png', title: 'Custom Map Wallpaper', description: 'A high-resolution render of a project for use as a background.', category: 'map' },
+      ];
+
+
+      function renderPortfolio() {
+         const grid = document.getElementById('portfolio-grid');
+         if (!grid) return;
+
+         let html = '';
+         portfolioData.forEach(item => {
+            const imagePath = `images/${item.filename}`;
+
+            html += `
+                     <div data-category="${item.category}" class="masonry-item group relative block overflow-hidden rounded-xl shadow-2xl hover:shadow-green-500/50 transition-all duration-300 cursor-pointer" onclick="openLightbox('${imagePath}')">
+                         <img 
+                             src="${imagePath}" 
+                             alt="${item.title}" 
+                             loading="lazy"
+                             width="600" 
+                             height="450" 
+                             class="w-full h-auto object-cover group-hover:scale-[1.07] transition-transform duration-300"
+                         />
+                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent overlay-content"></div>
+                         <div class="absolute bottom-0 left-0 right-0 p-6 overlay-content">
+                             <h3 class="text-2xl font-bold text-white mb-1">${item.title}</h3>
+                             <p class="text-xs text-gray-400">Category: ${item.category.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' / ')}</p>
+                         </div>
+                     </div>
+                 `;
+         });
+         grid.innerHTML = html;
+
+         initializeFilters();
+      }
+      function initializeFilters() {
+         const filterButtons = document.querySelectorAll('.filter-btn');
+         const portfolioItems = document.querySelectorAll('.masonry-item');
+
+         filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+               const filter = this.getAttribute('data-filter');
+
+               filterButtons.forEach(btn => {
+                  btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'text-white');
+                  btn.classList.add('bg-gray-700', 'hover:bg-green-700', 'text-gray-300', 'hover:text-white');
+               });
+               this.classList.add('bg-green-600', 'hover:bg-green-700', 'text-white');
+               this.classList.remove('bg-gray-700', 'text-gray-300');
+               portfolioItems.forEach(item => {
+                  const categories = item.getAttribute('data-category').split(' ');
+                  if (filter === 'all' || categories.includes(filter)) {
+                     item.style.display = 'block';
+                  } else {
+                     item.style.display = 'none';
+                  }
+               });
+            });
+         });
+         document.querySelector('.filter-btn[data-filter="all"]').click();
+      }
+      document.addEventListener('DOMContentLoaded', renderPortfolio);
+   </script>
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const internalLinks = document.querySelectorAll('a[href^="#"]');
+         internalLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+               e.preventDefault();
+               const targetId = this.getAttribute('href');
+               const targetElement = document.querySelector(targetId);
+               if (targetElement) {
+                  targetElement.scrollIntoView({
+                     behavior: 'smooth'
+                  });
+                  history.pushState(null, null, targetId);
+               }
+            });
+         });
+      });
+
+      // --- Smart Header Logic ---
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('main-header');
+      const headerContent = document.getElementById('header-content');
+      const logoContainer = document.getElementById('logo-container');
+
+      if (header && headerContent && logoContainer) {
+         window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Minimize Logic
+            if (currentScrollY > 50) {
+               header.classList.remove('py-4', 'bg-black/80');
+               header.classList.add('py-2', 'bg-black/95'); // Darker and shorter
+               headerContent.classList.remove('md:h-16');
+               headerContent.classList.add('md:h-12'); // Compact height
+               logoContainer.classList.add('scale-90'); // Shrink logo slightly
+            } else {
+               header.classList.add('py-4', 'bg-black/80');
+               header.classList.remove('py-2', 'bg-black/95');
+               headerContent.classList.add('md:h-16');
+               headerContent.classList.remove('md:h-12');
+               logoContainer.classList.remove('scale-90');
+            }
+
+            // Hide/Show Logic
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+               // Scrolling Down -> Hide
+               header.classList.add('-translate-y-full');
+            } else {
+               // Scrolling Up -> Show
+               header.classList.remove('-translate-y-full');
+            }
+
+            lastScrollY = currentScrollY;
+         });
+      }
+
+      // Back to Top Logic
+      const backToTopBtn = document.getElementById('backToTop');
+      if (backToTopBtn) {
+         window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+               backToTopBtn.classList.remove('opacity-0', 'translate-y-10');
+               backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+               backToTopBtn.classList.add('opacity-0', 'translate-y-10');
+               backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
+         });
+         backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+               top: 0,
+               behavior: 'smooth'
+            });
+         });
+      }
+
+      lucide.createIcons();
+   </script>
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const animatedElements = document.querySelectorAll('section h2, section p, .grid > div, section img, .flex > div, .masonry-item');
+         const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                  entry.target.classList.add('active');
+                  observer.unobserve(entry.target);
+               }
+            });
+         }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+         });
+
+         animatedElements.forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+         });
+      });
+   </script>
+</body>
+
+</html>
+<script>
+   const canvas = document.getElementById('gridBackground');
+   const ctx = canvas.getContext('2d');
+
+   // --- Configuration ---
+   const DENSITY = 30;     // Total number of vertical lines
+   const HORIZONTAL_LINES = 150; // Total number of horizontal lines
+   const F_SPEED = 0.05;   // Base speed of the forward motion
+   const PERSPECTIVE_SCALE = 150; // Perspective depth factor
+
+   let width, height;
+   let lines = [];
+   let mouseX = 0, mouseY = 0; // Mouse position variables
+   // --- PULSING STAR FIELD DATA ---
+   const STAR_COUNT = 300;
+   let stars = [];
+   const starSpeed = 0.05; // Base movement speed for floating stars
+
+   // --- Star Class (Modified for brighter/larger stars) ---
+   class Star {
+      constructor() {
+         this.x = Math.random() * width;
+         this.y = Math.random() * height;
+         // Randomly set size to 1px or 2px
+         this.size = Math.random() > 0.8 ? 2 : 1;
+         this.pulseOffset = Math.random() * Math.PI * 2; // Starting phase for pulsing
+         // Increased base opacity for brighter stars (0.7 to 1.0)
+         this.opacity = Math.random() * 0.3 + 0.7;
+         this.speedX = (Math.random() - 0.5) * starSpeed;
+         this.speedY = (Math.random() - 0.5) * starSpeed;
+      }
+      update() {
+         this.x += this.speedX;
+         this.y += this.speedY;
+         if (this.x < 0) this.x = width;
+         if (this.x > width) this.x = 0;
+         if (this.y < 0) this.y = height;
+         if (this.y > height) this.y = 0;
+
+         // Pulsing effect: uses a sine wave for smooth, random pulsing
+         // Pulsing factor adjusted to keep the minimum brightness higher
+         const pulse = Math.sin(Date.now() / 500 + this.pulseOffset); // Time-based pulsing
+         this.currentOpacity = this.opacity * (0.7 + 0.3 * pulse);
+      }
+      draw() {
+         // Use a subtle white glow for a brighter look
+         ctx.fillStyle = `rgba(255, 255, 255, ${this.currentOpacity})`;
+         ctx.fillRect(this.x, this.y, this.size, this.size);
+      }
+   }
+
+   // Initialize Star Field
+   function initStars() {
+      stars = []; // Clear existing stars on resize
+      for (let i = 0; i < STAR_COUNT; i++) {
+         stars.push(new Star());
+      }
+   }
+   // Handle resizing and initial setup
+   function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+
+      // Re-initialize stars with new dimensions
+      initStars();
+
+      // Initialize vertical lines
+      lines = [];
+      for (let i = 0; i < DENSITY; i++) {
+         lines.push({
+            z: Math.random() * 200, // Random Z position
+            // X offset calculation ensures lines are symmetrical around the center
+            xOffset: (i - DENSITY / 2) * (width / DENSITY / 2.5)
+         });
+      }
+   }
+   window.addEventListener('mousemove', (e) => {
+      // Normalize mouse coordinates to a -0.5 to 0.5 range relative to the center
+      mouseX = (e.clientX / width - 0.5) * 0.5;
+      mouseY = (e.clientY / height - 0.5) * 0.5;
+   });
+   function drawStars() {
+      stars.forEach(star => {
+         star.update();
+         star.draw();
+      });
+   }
+   function drawGrid(time) {
+      ctx.clearRect(0, 0, width, height);
+      const horizonY = height * 0.45;
+      const centerX = width / 2;
+      // Color Pulse: Subtle change in the line color over time
+      const colorPulse = 0.5 + Math.sin(time * 0.0005) * 0.5;
+      const hue = 180 + colorPulse * 60; // Shift from cyan (180) toward green (240)
+      const saturation = 100;
+      const lightness = 60;
+
+      // --- Draw Horizontal Lines (Depth) ---
+      for (let d = 0; d < HORIZONTAL_LINES; d += 1) {
+         // Z value, animated by time to look like it's passing
+         let z = d * 4 + (time * F_SPEED) % 4;
+         // Perspective calculation: farther objects (high Z) are closer to horizonY
+         let y = horizonY + (height * 10) / z;
+         if (y > height) continue;
+         let alpha = 1 - (z / (HORIZONTAL_LINES * 4));
+         // Use HSL for dynamic color, fading to transparency
+         ctx.strokeStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha * 0.25})`;
+         ctx.lineWidth = Math.max(0.5, 3 / z * PERSPECTIVE_SCALE * 0.05); // Line thickness based on Z
+         ctx.beginPath();
+         ctx.moveTo(0, y);
+         ctx.lineTo(width, y);
+         ctx.stroke();
+      }
+      for (let i = 0; i < DENSITY; i++) {
+         const line = lines[i];
+         // Move the line closer
+         line.z -= F_SPEED * 0.5;
+         if (line.z < 1) {
+            line.z = 200;
+         }
+         let perspectiveX = (line.xOffset) / line.z * PERSPECTIVE_SCALE;
+         let x = centerX + perspectiveX + (mouseX * width * (1 / line.z * 10));
+         let yTop = 0;
+         let yBottom = horizonY + (height * 10) / line.z;
+         let alpha = 1 - (line.z / 200);
+         ctx.strokeStyle = `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha * 0.5})`;
+         ctx.lineWidth = Math.max(0.5, 5 / line.z * PERSPECTIVE_SCALE * 0.05);
+         ctx.beginPath();
+         ctx.moveTo(x, yTop);
+         ctx.lineTo(x, yBottom);
+         ctx.stroke();
+      }
+   }
+   function animate(timestamp) {
+      drawGrid(timestamp);
+      drawStars();
+      requestAnimationFrame(animate);
+   }
+   window.addEventListener('load', () => {
+      resizeCanvas();
+      animate(0);
+   });
+   window.addEventListener('resize', resizeCanvas);
+</script>
+
+</html>

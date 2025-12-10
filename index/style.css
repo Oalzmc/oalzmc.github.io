@@ -1,0 +1,171 @@
+/* 1. Content Containers Reset */
+/* These elements must be transparent to allow the animated background layer (#container::before) to show through. */
+section,
+.main-content,
+footer,
+.wrapper,
+.your-white-div {
+    background: transparent !important;
+}
+
+/* 2. Main Container Setup */
+#container {
+    position: relative !important;
+    /* Base dark color fallback */
+    background-color: #0e0707 !important; 
+    overflow: hidden !important; 
+    /* Ensure it covers the whole viewport */
+    min-height: 100vh !important;
+}
+
+/* 3. The Animated Pseudo-Element Layer (Aurora and Stars) */
+#container::before {
+    content: "" !important;
+    /* Use fixed to cover the whole viewport, regardless of scrolling */
+    position: fixed !important; 
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: -1 !important; /* Forces background behind all content */
+    
+    background:
+        /* 1. Star Field Layer (Furthest Back, Blinking, Moving) */
+        /* Creates the 1px white dots using a radial-gradient and a large, random-looking background-size */
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 1.0) 1px, 
+            transparent 1px
+        ) 0 0 / 100px 100px, 
+        
+        /* 2. Bright Lime Glow (MAXIMUM VISIBILITY) */
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(220, 255, 100, 1.0), 
+            transparent 50%
+        ),
+        /* 3. Bright Green Glow (MAXIMUM VISIBILITY) */
+        radial-gradient(
+            circle at 75% 15%,
+            rgba(100, 255, 180, 1.0), 
+            transparent 65%
+        ),
+        /* 4. Light Blue Glow (MAXIMUM VISIBILITY) */
+        radial-gradient(
+            circle at 40% 85%,
+            rgba(180, 230, 255, 1.0), 
+            transparent 60%
+        ),
+        /* 5. Deep Blue Glow (MAXIMUM VISIBILITY) */
+        radial-gradient(
+            circle at 90% 60%,
+            rgba(100, 150, 255, 0.9), 
+            transparent 75%
+        ),
+        /* 6. Main Dark Fade (Base Black Sky) */
+        linear-gradient(
+            135deg,
+            #0e0707 0%,    
+            #303855 50%,   
+            #0e0707 100%   
+        ) !important;
+    
+    background-attachment: fixed !important;
+    /* Apply size for each layer: Stars (large), Aurora layers (cover), Base gradient (massive) */
+    background-size: 
+        1000px 1000px !important, /* Large size for sparse, random stars */
+        cover, cover, cover, cover, 
+        400% 400% !important; /* Massive size for flowing Aurora base */
+    background-repeat: no-repeat !important;
+    
+    /* Apply all three animations */
+    animation: 
+        backgroundShift 18s ease infinite alternate !important, /* Aurora Flow */
+        starMove 120s linear infinite !important, /* Slow Star Movement */
+        colorPulse 2s ease-in-out infinite alternate !important, /* Aurora Pulse */
+        starBlink 2.5s linear infinite alternate !important; /* Star Blinking */
+}
+
+/* 4. Animation Keyframes */
+
+/* Moves the Aurora and base gradient aggressively */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 0% !important;
+    }
+    100% {
+        background-position: 100% 100% !important;
+    }
+}
+
+/* Moves the Star Field much slower for a sense of depth/parallax */
+@keyframes starMove {
+    0% {
+        background-position: 0px 0px !important;
+    }
+    100% {
+        background-position: 1000px 1000px !important;
+    }
+}
+
+/* Dramatic pulse effect for the Aurora layer only */
+@keyframes colorPulse {
+    0% {
+        opacity: 0.7 !important; 
+    }
+    100% {
+        opacity: 1.0 !important; 
+    }
+}
+
+/* Star Blinking Effect: This works because the background-size for the stars is large (1000px) 
+   and this animation targets background-position, making the random pattern seem to shimmer/blink. */
+@keyframes starBlink {
+    0% {
+        background-position: 0 0 !important;
+    }
+    100% {
+        background-position: 1000px 1000px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+section, .main-content, footer, .wrapper, #container, .your-white-div { 
+    background-color: #0e0707 !important; 
+}
+
+    
+
+
+
+
+
+how to make Moving Aurora CSS Background Effect, only apply to : section, .main-content, footer, .wrapper, #container, .your-white-div { }, make sure to use !important; everywhere and make it very clearly moving with green, lime, blue,lightblue and back
+
+write way more code, make sure it overrides everything and is the clearest moving color possible, not slow not to fast and very bright, waayyy brigheter i still only see blackness make sure it looks like the norther lights with stars moving too, generate a lot of random star on the background, 1px white and make them slowly blink and move randomly like 100 stars
+
