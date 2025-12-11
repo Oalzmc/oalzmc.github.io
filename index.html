@@ -6,20 +6,20 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Oalz's Portfolio</title>
    <meta name="description"
-      content="Official terms of service and conditions for commissioning custom Minecraft builds from Oalz Creations.">
-   <link rel="canonical" href="https://minecraftbuilder.com/terms.html">
+      content="Hey, I'm Oalz, a professional Minecraft builder from the Netherlands with 8+ years of experience creating detailed builds and specializing in landscapes.">
+   <link rel="canonical" href="https://minecraftbuilder.com/index.html">
    <link rel="stylesheet" href="style.css">
    <link rel="icon" href="favicon.png" type="image/png">
-   <meta property="og:title" content="Oalz Creations - Terms of Service">
+   <meta property="og:title" content="Oalz's Portfolio">
    <meta property="og:description"
-      content="Official terms of service and conditions for commissioning custom Minecraft builds from Oalz Creations.">
+      content="Hey, I'm Oalz, a professional Minecraft builder from the Netherlands with 8+ years of experience creating detailed builds and specializing in landscapes.">
    <meta property="og:type" content="website">
-   <meta property="og:url" content="https://minecraftbuilder.com/terms.html">
+   <meta property="og:url" content="https://minecraftbuilder.com/index.html">
    <meta property="og:image" content="images/islandvertically.png">
    <meta name="twitter:card" content="summary_large_image">
-   <meta name="twitter:title" content="Oalz Creations - Terms of Service">
+   <meta name="twitter:title" content="Oalz's Portfolio">
    <meta name="twitter:description"
-      content="Official terms of service and conditions for commissioning custom Minecraft builds from Oalz Creations.">
+      content="Hey, I'm Oalz, a professional Minecraft builder from the Netherlands with 8+ years of experience creating detailed builds and specializing in landscapes.">
    <meta name="twitter:image" content="images/islandvertically.png">
    <script src="https://cdn.tailwindcss.com"></script>
    <script src="https://unpkg.com/lucide@latest"></script>
@@ -123,7 +123,7 @@
                         class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
                   </a>
                   <a href="#services"
-                     class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
+                     class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav hidden">
                      Services
                      <span
                         class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
@@ -140,7 +140,7 @@
                      <span
                         class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all duration-300 group-hover/nav:w-full"></span>
                   </a>
-                  <a href="#order"
+                  <a href="#" onclick="openContactOverlay(); return false;"
                      class="relative text-lg font-medium text-gray-300 hover:text-white transition-colors duration-300 group/nav">
                      Contact
                      <span
@@ -150,22 +150,40 @@
 
                <!-- CTA & Mobile Menu -->
                <div class="flex items-center gap-4">
-                  <a href="#order" class="hidden md:block">
-                     <button
+                  <div class="hidden md:block">
+                     <button onclick="openContactOverlay()"
                         class="relative overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-2 rounded-full font-bold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 group">
                         <span class="relative z-10">Get Started</span>
                         <div
                            class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         </div>
                      </button>
-                  </a>
-                  <button class="md:hidden text-gray-300 hover:text-white transition-colors p-2">
+                  </div>
+                  <button class="md:hidden text-gray-300 hover:text-white transition-colors p-2"
+                     onclick="toggleMobileMenu()">
                      <i data-lucide="menu" class="w-8 h-8"></i>
                   </button>
                </div>
             </div>
          </div>
       </header>
+      <!-- Mobile Menu Overlay -->
+      <div id="mobile-menu-overlay"
+         class="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl transform transition-transform duration-300 translate-x-full md:hidden flex flex-col items-center justify-center space-y-8">
+         <button class="absolute top-6 right-6 text-gray-400 hover:text-white" onclick="toggleMobileMenu()">
+            <i data-lucide="x" class="w-8 h-8"></i>
+         </button>
+         <a href="#portfolio" onclick="toggleMobileMenu()"
+            class="text-2xl font-medium text-gray-300 hover:text-white transition-colors">Portfolio</a>
+         <a href="#services" onclick="toggleMobileMenu()"
+            class="text-2xl font-medium text-gray-300 hover:text-white transition-colors hidden">Services</a>
+         <a href="#pricing" onclick="toggleMobileMenu()"
+            class="text-2xl font-medium text-gray-300 hover:text-white transition-colors">Pricing</a>
+         <a href="#testimonials" onclick="toggleMobileMenu()"
+            class="text-2xl font-medium text-gray-300 hover:text-white transition-colors">Reviews</a>
+         <a href="#order" onclick="toggleMobileMenu()"
+            class="text-2xl font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
+      </div>
       <div id="floating-btn-container"
          class="fixed bottom-6 right-6 z-50 transition-all duration-300 ease-in-out hidden md:block">
          <button onclick="openContactOverlay()" id="header-btn">
@@ -187,22 +205,22 @@
       <main>
          <section class="">
             <section
-               class="relative bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 text-white overflow-hidden">
+               class="relative bg-gradient-to-br from-emerald-900 via-green-800 to-teal-900 text-white overflow-hidden min-h-screen flex items-center">
                <div class="absolute inset-0 bg-black/20"></div>
-               <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+               <div class="relative max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full">
                   <div class="grid lg:grid-cols-2 gap-12 items-center">
                      <div class="space-y-8">
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
                            Professional Minecraft<br>
                            <span class="text-emerald-300">Builder for Hire</span>
                         </h1>
-                        <p class="text-xl sm:text-2xl text-green-100 leading-relaxed min-h-[96px] sm:min-h-[auto]">
+                        <p class="text-2xl sm:text-3xl text-green-100 leading-relaxed min-h-[96px] sm:min-h-[auto]">
                            Custom builds, detailed maps, and professional content creation support for Minecraft <span
                               id="rotating-text" class="text-emerald-300 font-bold inline-block">Events</span>
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
                            <button onclick="openContactOverlay()"
-                              class="relative overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 group flex items-center justify-center gap-2">
+                              class="relative overflow-hidden bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-5 rounded-lg font-semibold text-2xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.6)] hover:scale-105 active:scale-95 group flex items-center justify-center gap-2 whitespace-nowrap">
                               <span class="relative z-10 flex items-center gap-3">
                                  <i data-lucide="hammer" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
                                  Get Your Custom Build
@@ -213,7 +231,7 @@
                            </button>
                            <a href="gallery.html" class="inline-block">
                               <button
-                                 class="border-2 border-white/30 hover:border-white bg-white/15 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors backdrop-blur-sm flex items-center justify-center gap-2 group">
+                                 class="border-2 border-white/30 hover:border-white bg-white/15 text-white px-10 py-5 rounded-lg font-semibold text-2xl transition-colors backdrop-blur-sm flex items-center justify-center gap-2 group whitespace-nowrap">
                                  <i data-lucide="image" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                                  View Creations
                               </button>
@@ -530,12 +548,13 @@
                               Schematic file included
                            </li>
                         </ul>
-                        <a href="#order" class="w-full">
-                           <button
+                        </ul>
+                        <button onclick="openContactOverlay()" class="w-full">
+                           <div
                               class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                               Get Started
-                           </button>
-                        </a>
+                           </div>
+                        </button>
                      </div>
                      <div
                         class="bg-emerald-900/20 rounded-2xl p-8 shadow-lg border-2 border-emerald-500 relative backdrop-blur-sm">
@@ -588,12 +607,13 @@
                               Two revision rounds
                            </li>
                         </ul>
-                        <a href="#order" class="w-full">
-                           <button
+                        </ul>
+                        <button onclick="openContactOverlay()" class="w-full">
+                           <div
                               class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                               Get Started
-                           </button>
-                        </a>
+                           </div>
+                        </button>
                      </div>
                      <div class="bg-blue-100 rounded-2xl p-8 shadow-sm border border-gray-200">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">Large Project</h3>
@@ -640,12 +660,13 @@
                               Priority support
                            </li>
                         </ul>
-                        <a href="#order" class="w-full">
-                           <button
+                        </ul>
+                        <button onclick="openContactOverlay()" class="w-full">
+                           <div
                               class="w-full bg-gray-900 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                               Contact Me
-                           </button>
-                        </a>
+                           </div>
+                        </button>
                      </div>
                   </div>
                   <div class="bg-gray-300 rounded-2xl p-8 shadow-sm">
@@ -1037,12 +1058,12 @@
                            <h3 class="text-xl font-semibold text-gray-900 mb-4">Still have questions?</h3>
                            <p class="text-gray-600 mb-4">I'm here to help! Get in touch and I'll answer any questions
                               about your project.</p>
-                           <a href="#order" class="w-full">
-                              <button
+                           <button onclick="openContactOverlay()" class="w-full">
+                              <div
                                  class="w-full bg-green-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors">
                                  Contact Me
-                              </button>
-                           </a>
+                              </div>
+                           </button>
                         </div>
                      </div>
                   </div>
@@ -1176,7 +1197,8 @@
                <div>
                   <h3 class="text-white font-semibold mb-4">Support</h3>
                   <ul class="space-y-2">
-                     <li><a href="#order" class="text-gray-400 hover:text-green-400 transition-colors">Contact</a></li>
+                     <li><a href="#" onclick="openContactOverlay(); return false;"
+                           class="text-gray-400 hover:text-green-400 transition-colors">Contact</a></li>
                      <li><a href="#faq" class="text-gray-400 hover:text-green-400 transition-colors">FAQ</a></li>
                      <li><a href="gallery.html"
                            class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a>
@@ -1397,7 +1419,7 @@
          <div class="flex flex-col md:flex-row gap-6 mb-12 w-full max-w-4xl justify-center items-stretch">
             <!-- Discord Button -->
             <a href="https://discord.com/users/1237697528862867481" target="_blank" id="btn-discord"
-               class="flex-1 group relative overflow-hidden bg-[#5865F2] hover:bg-[#4752C4] text-white py-6 px-10 rounded-2xl transition-all duration-500 transform translate-y-10 opacity-0 shadow-2xl hover:shadow-[#5865F2]/50 hover:-translate-y-2 flex items-center justify-center gap-6 border border-[#5865F2] hover:border-white/20">
+               class="flex-1 group relative overflow-hidden bg-[#5865F2] hover:bg-[#4752C4] text-white py-6 px-10 rounded-2xl transition-all duration-500 transform translate-y-10 opacity-0 shadow-2xl hover:shadow-[#5865F2]/50 hover:-translate-y-2 flex items-center justify-center gap-6 border border-[#5865F2] hover:border-white/20 h-[130px] md:h-[150px]">
                <!-- Discord Logo SVG -->
                <svg
                   class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-5deg]"
@@ -1418,23 +1440,48 @@
             </a>
 
             <!-- Email Button -->
-            <a href="mailto:Oalz-@outlook.com" id="btn-email"
-               class="flex-1 group relative overflow-hidden bg-white hover:bg-gray-50 text-gray-900 py-6 px-10 rounded-2xl transition-all duration-500 transform translate-y-10 opacity-0 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 flex items-center justify-center gap-6 border border-gray-200 delay-100">
-               <div class="relative">
-                  <i data-lucide="mail"
-                     class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg] text-gray-900"></i>
-                  <div
-                     class="absolute inset-0 bg-emerald-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div id="btn-email" onclick="toggleEmailView()"
+               class="flex-1 group relative overflow-hidden bg-white hover:bg-gray-50 text-gray-900 py-6 px-10 rounded-2xl transition-all duration-500 transform translate-y-10 opacity-0 shadow-2xl hover:shadow-white/30 hover:-translate-y-2 flex items-center justify-center gap-6 border border-gray-200 delay-100 cursor-pointer h-[130px] md:h-[150px]">
+
+               <!-- Default View -->
+               <div id="email-default-view"
+                  class="flex items-center justify-center gap-6 w-full transition-all duration-300">
+                  <div class="relative">
+                     <i data-lucide="mail"
+                        class="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[5deg] text-gray-900"></i>
+                     <div
+                        class="absolute inset-0 bg-emerald-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                     </div>
+                  </div>
+                  <div class="flex flex-col items-start">
+                     <span
+                        class="text-2xl md:text-3xl font-bold font-sans tracking-wide group-hover:tracking-wider transition-all duration-300">Email</span>
+                     <span
+                        class="text-sm md:text-base font-medium text-gray-600 group-hover:text-gray-900 transition-colors">Send
+                        a message</span>
                   </div>
                </div>
-               <div class="flex flex-col items-start">
-                  <span
-                     class="text-2xl md:text-3xl font-bold font-sans tracking-wide group-hover:tracking-wider transition-all duration-300">Email</span>
-                  <span
-                     class="text-sm md:text-base font-medium text-gray-600 group-hover:text-gray-900 transition-colors">Send
-                     a message</span>
+
+               <!-- Copy View -->
+               <div id="email-copy-view"
+                  class="hidden absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 bg-white w-full h-full">
+                  <a href="mailto:Oalz-@outlook.com" onclick="event.stopPropagation()"
+                     class="text-emerald-500 hover:text-emerald-400 font-bold text-lg mb-1 flex items-center gap-2 transition-colors">
+                     Open Email App
+                     <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                  <p class="text-sm text-gray-500 font-medium">Click to Copy</p>
+                  <div class="flex items-center gap-2 w-full max-w-sm">
+                     <input type="text" value="Oalz-@outlook.com" readonly
+                        class="w-full bg-gray-100 text-gray-900 px-4 py-3 rounded-lg font-mono text-center focus:outline-none border border-gray-200"
+                        onclick="event.stopPropagation(); copyEmail(this)">
+                     <button onclick="event.stopPropagation(); copyEmail(this.previousElementSibling)"
+                        class="bg-emerald-500 hover:bg-emerald-600 text-white p-3 rounded-lg transition-colors flex-shrink-0">
+                        <i data-lucide="copy" class="w-5 h-5"></i>
+                     </button>
+                  </div>
                </div>
-            </a>
+            </div>
          </div>
 
          <!-- Close Button -->
@@ -1444,6 +1491,53 @@
          </button>
       </div>
    </div>
+
+   <script>
+      function toggleEmailView() {
+         const defaultView = document.getElementById('email-default-view');
+         const copyView = document.getElementById('email-copy-view');
+
+         if (copyView.classList.contains('hidden')) {
+            defaultView.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+               defaultView.classList.add('hidden');
+               copyView.classList.remove('hidden');
+               // Trigger Lucide icons for new content
+               lucide.createIcons();
+            }, 200);
+         }
+      }
+
+      function copyEmail(element) {
+         // Handle both input click and button click
+         const input = element.tagName === 'INPUT' ? element : element.previousElementSibling;
+         const btn = element.tagName === 'BUTTON' ? element : element.nextElementSibling;
+         const icon = btn.querySelector('i');
+
+         navigator.clipboard.writeText("Oalz-@outlook.com");
+
+         // Visual feedback
+         btn.classList.replace('bg-emerald-500', 'bg-green-600');
+         btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i>';
+         lucide.createIcons();
+
+         setTimeout(() => {
+            btn.classList.replace('bg-green-600', 'bg-emerald-500');
+            btn.innerHTML = '<i data-lucide="copy" class="w-5 h-5"></i>';
+            lucide.createIcons();
+
+            // Reset view after success
+            setTimeout(() => {
+               const defaultView = document.getElementById('email-default-view');
+               const copyView = document.getElementById('email-copy-view');
+
+               copyView.classList.add('hidden');
+               defaultView.classList.remove('hidden');
+               setTimeout(() => defaultView.classList.remove('opacity-0', 'scale-95'), 10);
+            }, 500);
+         }, 1500);
+      }
+   </script>
 
    <script>
       function openContactOverlay() {
@@ -1488,6 +1582,19 @@
             overlay.classList.add('hidden');
             document.body.style.overflow = '';
          }, 500);
+      }
+
+      function toggleMobileMenu() {
+         const menu = document.getElementById('mobile-menu-overlay');
+         const body = document.body;
+
+         if (menu.classList.contains('translate-x-full')) {
+            menu.classList.remove('translate-x-full');
+            body.style.overflow = 'hidden';
+         } else {
+            menu.classList.add('translate-x-full');
+            body.style.overflow = '';
+         }
       }
    </script>
 
